@@ -225,7 +225,7 @@ footer a:hover {
 <footer class="footer">
 	<div class="container">
 		<div>
-			<img src="logo.png" alt="Tutor Finder" style="height: 50px;">
+			<img src="{{ asset('assets/images/logo.jpg') }}" alt="Tutot Finder :" style="width: 300px; height: 175px;">
 			<p></p>
 		</div>
 		<div>
@@ -240,26 +240,26 @@ footer a:hover {
 		<div>
 			<h4>Explore</h4>
 			<ul>
-				<li><a href="/programs">Programs</a></li>
-				<li><a href="/teacher-registration">Teacher Registration</a></li>
-				<li><a href="/teacher-registration">Get the best Tutuor</a></li>
+				<li><a href="{{ route('home') }}" >Programs</a></li>
+				<li><a href="{{ route('account.registration') }}">Registration</a></li>
+				<li><a href="{{ route('jobs') }}">Get the best Tutuor</a></li>
 			</ul>
 		</div>
 		<div>
 			<h4>Get In Touch</h4>
-			<p>Address: CSE, KUET</p>
-			<p>Helpline: 01571421684</p>
-			<p>Email: <a href="mailto:tirthomondal.2001@gmail.com">tirthomondal.2001@gmail.com</a></p>
+			<p><img src="{{ asset('assets/images/location2.png') }}" alt="Location :" style="width: 35px; height: 35px;"> CSE, KUET</p>
+			<p><img src="{{ asset('assets/images/call2.png') }}" alt="Contact :" style="width: 35px; height: 35px;"> 01571421684</p>
+			<p><img src="{{ asset('assets/images/email.png') }}" alt="Emial :" style="width: 30px; height: 30px;"> <a href="mailto:tirthomondal.2001@gmail.com"> tirthomondal.2001@gmail.com</a></p>
 			<div class="social-icons">
-				<a href="https://facebook.com"><img src="facebook-icon.png" alt="Facebook"></a>
-				<a href="https://youtube.com"><img src="youtube-icon.png" alt="YouTube"></a>
-				<a href="https://instagram.com"><img src="instagram-icon.png" alt="Instagram"></a>
-				<a href="https://linkedin.com"><img src="linkedin-icon.png" alt="LinkedIn"></a>
+				<a href="https://www.facebook.com/tirtho117?mibextid=ZbWKwL"><img src="{{ asset('assets/images/facebook.jpeg') }}" alt="Facebook"></a>
+				<a href="https://www.youtube.com/channel/UCFQ6HsOnzAeUlFAVNjS-rPQ"><img src="{{ asset('assets/images/youtube.jpeg') }}" alt="YouTube"></a>
+				<a href="https://instagram.com"><img src="{{ asset('assets/images/twitter.jpg') }}"></a>
+				<a href="https://linkedin.com"><img src="{{ asset('assets/images/link.png') }}" alt="LinkedIn"></a>
 			</div>
 		</div>
 	</div>
 	<div class="copyright">
-		<p>Copyright © <a href="#">Tirtho Modnal</a>e. All rights reserved. 2024</p>
+		<p>Copyright © <a href="#">Tirtho Modnal</a>. All rights reserved. 2024</p>
 	</div>
 </footer>
 
