@@ -127,22 +127,3 @@ Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 //SSLCOMMERZ END
 
 
-//Route::resource('categories', CategoryController::class);
-
-
-// Route::get('/clsssub', [CategoryController::class, 'index'])->name('clsssub.index');
-// Route::get('/clsssub/create', [CategoryController::class, 'create'])->name('clsssub.create');
-// Route::post('/clsssub/store', [CategoryController::class, 'store'])->name('clsssub.store');
-// Route::get('/clsssub/{category}', [CategoryController::class, 'show'])->name('clsssub.show');
-// Route::get('/clsssub/{category}/edit', [CategoryController::class, 'edit'])->name('clsssub.edit');
-// Route::put('/clsssub/{category}', [CategoryController::class, 'update'])->name('clsssub.update');
-// Route::delete('/clsssub/{category}', [CategoryController::class, 'destroy'])->name('clsssub.destroy');
-
-
-Route::get('/subjects', [SubjectController::class, 'index'])->name('subject.index');
-Route::get('/subjects/create', [SubjectController::class, 'create'])->name('subject.create');
-Route::post('/subjects/store', [SubjectController::class, 'store'])->name('subject.store');
-Route::get('/subjects/{jobType}', [SubjectController::class, 'show'])->name('subject.show');
-Route::get('/subjects/{jobType}/edit', [SubjectController::class, 'edit'])->name('subject.edit');
-Route::put('/subjects/{jobType}', [SubjectController::class, 'update'])->name('subject.update');
-Route::delete('/subjects/{jobType}', [SubjectController::class, 'destroy'])->name('subject.destroy');
