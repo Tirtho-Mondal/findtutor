@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\TutionApplicationController;
 use App\Http\Controllers\admin\AdminTutionController;
 use App\Http\Controllers\admin\UserController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\TutionsController;
@@ -49,6 +50,20 @@ Route::group(['prefix' => 'admin','middleware' => 'checkRole'], function(){
     Route::delete('/tuition',[AdminTutionController::class,'destroy'])->name('admin.jobs.destroy');
     Route::get('/tuition-applications',[TutionApplicationController::class,'index'])->name('admin.jobApplications');
     Route::delete('/tuition-applications',[TutionApplicationController::class,'destroy'])->name('admin.jobApplications.destroy');
+
+
+
+
+    //add class
+        
+    Route::get('/clsssub', [CategoryController::class, 'index'])->name('clsssub.index');
+    Route::get('/clsssub/create', [CategoryController::class, 'create'])->name('clsssub.create');
+    Route::post('/clsssub/store', [CategoryController::class, 'store'])->name('clsssub.store');
+    Route::get('/clsssub/{category}', [CategoryController::class, 'show'])->name('clsssub.show');
+    Route::get('/clsssub/{category}/edit', [CategoryController::class, 'edit'])->name('clsssub.edit');
+    Route::put('/clsssub/{category}', [CategoryController::class, 'update'])->name('clsssub.update');
+    Route::delete('/clsssub/{category}', [CategoryController::class, 'destroy'])->name('clsssub.destroy');
+
 });
 
 Route::group(['prefix' => 'account'], function(){
@@ -98,3 +113,16 @@ Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 
 Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 //SSLCOMMERZ END
+
+
+//Route::resource('categories', CategoryController::class);
+
+
+Route::get('/clsssub', [CategoryController::class, 'index'])->name('clsssub.index');
+Route::get('/clsssub/create', [CategoryController::class, 'create'])->name('clsssub.create');
+Route::post('/clsssub/store', [CategoryController::class, 'store'])->name('clsssub.store');
+Route::get('/clsssub/{category}', [CategoryController::class, 'show'])->name('clsssub.show');
+Route::get('/clsssub/{category}/edit', [CategoryController::class, 'edit'])->name('clsssub.edit');
+Route::put('/clsssub/{category}', [CategoryController::class, 'update'])->name('clsssub.update');
+Route::delete('/clsssub/{category}', [CategoryController::class, 'destroy'])->name('clsssub.destroy');
+

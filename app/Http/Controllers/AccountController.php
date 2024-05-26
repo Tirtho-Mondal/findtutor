@@ -137,52 +137,43 @@ class AccountController extends Controller
         return redirect()->route('account.login');
     }
 
-    public function updateProfilePic(Request $request) {
-        //dd($request->all());
+ 
+   
+public function updateProfilePic(Request $request) {
+    $id = Auth::user()->id;
 
-        $id = Auth::user()->id;
+    $validator = Validator::make($request->all(), [
+        'image' => 'required|image'
+    ]);
 
-        $validator = Validator::make($request->all(),[
-            'image' => 'required|image'
-        ]);
+    if ($validator->passes()) {
+        $image = $request->file('image'); 
+        $ext = $image->getClientOriginalExtension();
+        $imageName = $id . '-' . time() . '.' . $ext;
+        $image->move(public_path('/profile_pic/'), $imageName);
 
-        if ($validator->passes()) {
-
-            $image = $request->image;
-            $ext = $image->getClientOriginalExtension();
-            $imageName = $id.'-'.time().'.'.$ext;
-            $image->move(public_path('/profile_pic/'), $imageName);
-
-
-            // Create a small thumbnail
-            $sourcePath = public_path('/profile_pic/'.$imageName);
-            $manager = new ImageManager(Driver::class);
-            $image = $manager->read($sourcePath);
-
-            // crop the best fitting 5:3 (600x360) ratio and resize to 600x360 pixel
-            $image->cover(150, 150);
-            $image->toPng()->save(public_path('/profile_pic/thumb/'.$imageName));
-
-            // Delete Old Profile Pic
-            File::delete(public_path('/profile_pic/thumb/'.Auth::user()->image));
-            File::delete(public_path('/profile_pic/'.Auth::user()->image));
-
-            User::where('id',$id)->update(['image' => $imageName]);
-
-            session()->flash('success','Profile picture updated successfully.');
-
-            return response()->json([
-                'status' => true,
-                'errors' => []
-            ]);
-
-        } else {
-            return response()->json([
-                'status' => false,
-                'errors' => $validator->errors()
-            ]);
+        
+        $oldImage = Auth::user()->image;
+        if ($oldImage) {
+            File::delete(public_path('/profile_pic/thumb/' . $oldImage));
+            File::delete(public_path('/profile_pic/' . $oldImage));
         }
+
+        User::where('id', $id)->update(['image' => $imageName]);
+
+        session()->flash('success', 'Profile picture updated successfully.');
+
+        return response()->json([
+            'status' => true,
+            'errors' => []
+        ]);
+    } else {
+        return response()->json([
+            'status' => false,
+            'errors' => $validator->errors()
+        ]);
     }
+}
 
     public function createJob() {
 
